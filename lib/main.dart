@@ -4,21 +4,45 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
-    Widget build(BuildContext context) {
-      return new MaterialApp(
+  Widget build(BuildContext context) {
+    return new MaterialApp(
         title: "Getting Started",
         home: new Scaffold(
-          appBar: new AppBar(
-            title: new Text("App Bar Title"),
-          ),
-          body: new Center(
-            child: new Text("Home")
-          )
-        )
-      );
-    }
+            appBar: new AppBar(
+              title: new Text("App Bar Title"),
+            ),
+            body: new HomeWidget()));
+  }
 }
 
+class HomeWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new ListView.builder(
+      itemCount: 20,
+      itemBuilder: (context, rowNumber) {
+        return new Container(
+            padding: new EdgeInsets.all(16.0),
+            child: new Column(
+              children: <Widget>[
+                new Image.network(
+                    "https://cdn.newsapi.com.au/image/v1/9fdbf585d17c95f7a31ccacdb6466af9"),
+                new Text(
+                  "My Face Pic $rowNumber",
+                  style: new TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 18.0),
+                ),
+                new Divider(
+                  color: Colors.red,
+                )
+              ],
+            ));
+      },
+    );
+  }
+}
+
+//STARTER EXAMPLE INFO
 // import 'package:flutter/material.dart';
 
 // void main() => runApp(MyApp());
